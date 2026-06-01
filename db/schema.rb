@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_01_105359) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_01_110331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "dining_tables", force: :cascade do |t|
+    t.integer "capacity"
+    t.datetime "created_at", null: false
+    t.bigint "restaurant_id", null: false
+    t.integer "status"
+    t.integer "table_number"
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_dining_tables_on_restaurant_id"
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.text "address"
@@ -34,4 +44,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_01_105359) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "dining_tables", "restaurants"
 end
