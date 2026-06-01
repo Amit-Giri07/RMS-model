@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :restaurants
+  resources :dining_tables
+  resources :menu_items
+
   get "dashboard/index"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
