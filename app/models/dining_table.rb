@@ -1,5 +1,6 @@
 class DiningTable < ApplicationRecord
   belongs_to :restaurant
+  has_many :orders
 
   enum :status, {
     available: 0,

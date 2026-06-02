@@ -1,0 +1,13 @@
+<h2>New Order</h2>
+
+<%= form_with model: @order do |f| %>
+
+    <%= f.label :dining_table_id %>
+    <%= f.collection_select :dining_table_id,
+                            DiningTable.all,
+                            :id
+                            :table_number %> 
+
+    <%= f.submit "Create Order" %>
+
+<% end %>
