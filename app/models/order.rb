@@ -23,4 +23,18 @@ class Order < ApplicationRecord
   }
 
   validates :order_number, presence: true
+
+  def calculate_total
+    order_items.sum do |item|
+      item.quantity * item.price
+    end
+  end
+
+  def tax_amount
+    calculate_total * 0.13
+  end
+
+  def final_total
+    calculate_total + tax_amount
+  end
 end
