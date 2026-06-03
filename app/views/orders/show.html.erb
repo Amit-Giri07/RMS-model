@@ -1,0 +1,18 @@
+<h2>Order <%= @order.order_number %></h2>
+
+<%= form_with url: order_items_path do |f| %>
+
+    <%= hidden_field_tag :order_id, @order.id %>
+
+    <%= select_tag :menu_item_id,
+        options_form_collection_for_select(
+            MenuItem.all,
+            :id,
+            :name
+        ) %>
+
+    <%= number_field_tag :quantity, 1 %>
+
+    <%= submit_tag "Add Item" %>
+
+<% end %>

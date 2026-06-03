@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :dining_tables
   resources :menu_items
   resources :orders
+  resources :order_items, only: [ :create ]
 
   get "dashboard/index"
   devise_for :users
