@@ -7,4 +7,15 @@
         -
         <%= order.status %>
     </p>
+
+<%= button_to "Preparing",
+    order_path(order,
+    order: { status: :preparing }),
+    method: :patch %>
+
+<%= button_to "Ready",
+    order_path(order,
+    order: { status: :ready }),
+    method: :patch %>
 <% end %>
+
