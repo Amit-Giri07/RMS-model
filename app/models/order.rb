@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  has_one :payment
   before_validation :generate_order_number
 
   private
