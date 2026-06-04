@@ -1,0 +1,23 @@
+<h2>Checkout<h2>
+
+<p>
+    Order: 
+    <%= @order.order_number %>
+</p>
+
+<p>
+    Total:
+    Rs. <%= @order.final_total %>
+</p>
+
+<%= form_with model: @payment,
+                url: payments_path(order_id: @order.id) do |f| %>
+
+    <%= f.label :payment_method %>
+
+    <%= f.select :payment_method,
+        Payment.payment_methods.keys %>
+
+    <%= f.submit "Pay Now" %>
+
+<% end %>
