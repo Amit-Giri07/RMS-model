@@ -16,3 +16,9 @@
     <%= submit_tag "Add Item" %>
 
 <% end %>
+
+<%= link_to "Checkout",
+            new_payment_path(
+                order_id: @order.id
+            ),
+            class: "btn btn-success" %>

@@ -1,6 +1,12 @@
 class PaymentsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @payments = Payment.all.order(
+      created_at: :desc
+    )
+  end
+
   def new
     @order = Order.find(params[:order_id])
     @payment = Payment.new
