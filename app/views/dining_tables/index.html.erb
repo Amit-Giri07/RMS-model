@@ -1,0 +1,36 @@
+<h1>Dining Tables</h1>
+
+<%= link_to "Add Table", new_dining_table_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Table_Number</th>
+      <th>Status</th>
+      <%# <th colspan="2">Actions</th> %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dining_tables.each do |table| %>
+      <tr>
+        <td><%= table.table_number %></td>
+        <td><%= table.status %></td>
+
+        <td>
+          <%= link_to "Edit",
+              edit_dining_table_path(table) %>
+        </td>
+
+        <td>
+          <%= button_to "Delete",
+              dining_table_path(table),
+              method: :delete,
+              data: {
+                turbo_confirm: "Are you sure?"
+              } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,27 @@
+<h1>New Dining Table</h1>
+
+<% if @dining_table.errors.any? %>
+  <ul>
+    <% @dining_table.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @dining_table do |f| %>
+  <div>
+    <%= f.label :restaurant_id, "Restaurant" %>
+    <%= f.collection_select :restaurant_id,
+        Restaurant.all,
+        :id,
+        :name %>
+  </div>
+
+  <div>
+    <%= f.label :table_number %>
+    <%= f.text_field :table_number %>
+  </div>
+
+
+  <%= f.submit "Create Table" %>
+<% end %>

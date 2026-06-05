@@ -1,0 +1,15 @@
+<h1>Edit Menu Item</h1>
+
+<%= form_with model: @menu_item do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <%= f.submit "Update Menu Item" %>
+<% end %>

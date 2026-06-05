@@ -1,0 +1,24 @@
+<h1>Menu Items</h1>
+
+<%= link_to "Add Menu Item", new_menu_item_path %>
+
+<table>
+    <% @menu_items.each do |menu_item| %>
+    <tr>
+        <td><%= menu_item.name %></td>
+        <td>Rs. <%= menu_item.price %></td>
+
+        <td>
+            <%= link_to "Edit", edit_menu_item_path(menu_item) %>
+        </td>
+
+        <td>
+            <%= button_to "Delete",
+                menu_item_path(menu_item),
+                method: :delete,
+                data: {turbo_confirm: "Are you sure?" } %>
+        </td>
+    </tr>
+    <% end %>
+</table>
+

@@ -1,0 +1,18 @@
+<h1>Edit Dining Table</h1>
+
+<% if @dining_table.errors.any? %>
+  <ul>
+    <% @dining_table.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @dining_table do |f| %>
+  <div>
+    <%= f.label :status %>
+    <%= f.select :status, DiningTable.statuses.key %>
+  </div>
+
+  <%= f.submit "Update Table" %>
+<% end %>

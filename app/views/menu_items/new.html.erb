@@ -1,0 +1,27 @@
+<h1>New Menu Item</h1>
+
+<% if @menu_item.errors.any? %>
+  <div>
+    <h3><%= pluralize(@menu_item.errors.count, "error") %> prevented saving:</h3>
+    <ul>
+      <% @menu_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @menu_item do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <%= f.submit "Create Menu Item" %>
+<% end %>
+
