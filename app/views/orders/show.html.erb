@@ -5,13 +5,15 @@
     <%= hidden_field_tag :order_id, @order.id %>
 
     <%= select_tag :menu_item_id,
-        options_form_collection_for_select(
+        options_from_collection_for_select(
             MenuItem.all,
             :id,
             :name
         ) %>
 
-    <%= number_field_tag :quantity, 1 %>
+    <%= number_field_tag :quantity,
+                         1,
+                         min: 1 %>
 
     <%= submit_tag "Add Item" %>
 
@@ -22,3 +24,43 @@
                 order_id: @order.id
             ),
             class: "btn btn-success" %>
+
+<h3>Items</h3>
+
+<table>
+  <tr>
+    <th>Menu Item</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Subtotal</th>
+  </tr>
+
+  <% @order.order_items.each do |item| %>
+    <tr>
+      <td><%= item.menu_item.name %></td>
+      <td><%= item.quantity %></td>
+      <td>Rs. <%= item.price %></td>
+      <td>Rs. <%= item.quantity * item.price %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <strong>Subtotal:</strong>
+  Rs. <%= @order.calculate_total %>
+</p>
+
+<p>
+  <strong>Tax (13%):</strong>
+  Rs. <%= @order.tax_amount %>
+</p>
+
+<p>
+  <strong>Final Total:</strong>
+  Rs. <%= @order.final_total %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status.present? ? @order.status.humanize : "Pending" %>
+</p>

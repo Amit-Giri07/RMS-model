@@ -2,10 +2,10 @@
 
 <%= form_with model: @order do |f| %>
 
-    <%= f.label :dining_table_id %>
+    <%= f.label :dining_table_id, "Dining Table" %>
     <%= f.collection_select :dining_table_id,
                             DiningTable.all,
-                            :id
+                            :id,
                             :table_number %> 
 
     <%= f.submit "Create Order" %>

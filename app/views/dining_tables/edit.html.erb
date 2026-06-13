@@ -9,10 +9,18 @@
 <% end %>
 
 <%= form_with model: @dining_table do |f| %>
+
+  <div>
+    <%= f.label :table_number %>
+    <%= f.text_field :table_number %>
+  </div>
+
   <div>
     <%= f.label :status %>
-    <%= f.select :status, DiningTable.statuses.key %>
+    <%= f.select :status,
+                 DiningTable.statuses.keys.map { |s| [s.titleize, s] } %>
   </div>
 
   <%= f.submit "Update Table" %>
+
 <% end %>

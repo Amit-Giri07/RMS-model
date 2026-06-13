@@ -24,6 +24,13 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def destroy
+    @order_item = OrderItem.find(params[:id])
+    @order_item.destroy
+
+    redirect_back fallbaack_location: root_path
+  end
+
   private
 
   def order_params

@@ -27,7 +27,7 @@ class DiningTablesController < ApplicationController
     if @dining_table.update(dining_table_params)
       redirect_to dining_tables_path, notice: "Table Updated Successfully"
     else
-      render :edit, status: unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -7,6 +7,10 @@ class PaymentsController < ApplicationController
     )
   end
 
+  def show
+    @payment = Payment.find(params[:id])
+  end
+
   def new
     @order = Order.find(params[:order_id])
     @payment = Payment.new
