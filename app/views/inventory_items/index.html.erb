@@ -1,0 +1,53 @@
+<h1>Inventory</h1>
+
+<%= link_to "Add Item",
+            new_inventory_item_path,
+            class: "btn btn-primary" %>
+
+<br><br>
+
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Unit</th>
+      <th>Min Stock</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventory_items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+
+        <td><%= item.quantity %></td>
+
+        <td><%= item.unit %></td>
+
+        <td><%= item.minimum_stock %></td>
+
+        <td>
+          <% if item.quantity <= item.minimum_stock %>
+            ⚠ Low Stock
+          <% else %>
+            Available
+          <% end %>
+        </td>
+
+        <td>
+          <%= link_to "View", item %>
+
+          <%= link_to "Edit",
+                      edit_inventory_item_path(item) %>
+
+          <%= button_to "Delete",
+                        inventory_item_path(item),
+                        method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

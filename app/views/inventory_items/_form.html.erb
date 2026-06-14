@@ -1,0 +1,30 @@
+<%= form_with model: @inventory_item do |f| %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </p>
+
+  <p>
+    <%= f.label :unit %><br>
+    <%= f.text_field :unit %>
+  </p>
+
+  <p>
+    <%= f.label :minimum_stock %><br>
+    <%= f.number_field :minimum_stock %>
+  </p>
+
+  <p>
+    <%= f.label :cost_price %><br>
+    <%= f.number_field :cost_price, step: 0.01 %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>

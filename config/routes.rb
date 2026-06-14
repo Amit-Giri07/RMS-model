@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_items, only: [ :create ]
   resources :payments
+  resources :inventory_items
 
   get "dashboard/index"
   devise_for :users
